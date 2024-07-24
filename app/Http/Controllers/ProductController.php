@@ -46,16 +46,17 @@ class ProductController extends Controller
         $input = $request->all();
     
         if ($image = $request->file('image')) {
-            $path = $image->store('images', 'public'); // Menyimpan di storage/app/public/images
-            $input['image'] = basename($path);
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
         }
-    
+      
         Product::create($input);
-    
+       
         return redirect()->route('products.index')
                          ->with('success', 'Produk berhasil ditambahkan.');
     }
-    
   
     /**
      * Display the specified resource.
