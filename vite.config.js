@@ -8,9 +8,12 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    optimizeDeps: {
+        include: ['pusher-js'],
+    },
     build: {
         rollupOptions: {
-            external: ['laravel-echo'],
+            external: ['laravel-echo', 'pusher-js'],
         },
     },
 });
