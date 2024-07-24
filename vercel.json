@@ -9,11 +9,13 @@
         { "src": "/(.*)", "dest": "/api/index.php" }
     ],
     "public": true,
-    "buildCommand": "vite build",
-    "outputDirectory": "public",
+    "builds": [
+        { "src": "vite build", "use": "@vercel/static-build" }
+    ],
+    "output": "/public",
     "env": {
         "APP_ENV": "production",
-        "APP_DEBUG": "false",
+        "APP_DEBUG": "true",
         "APP_URL": "https://uas-web-2.vercel.app",
         "APP_KEY": "base64:2tXuqqV7kxuBe9Y8o3ZEkAE+DxQIVfxNukiRaOZ466E=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
