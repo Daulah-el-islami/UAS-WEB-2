@@ -47,7 +47,7 @@
                 @forelse ($products as $product)
                     <tr>
                         <td>{{ $loop->index + 1 }}</td>
-                        <td><img src="app/public/images/{{ $product->image }}" width="100px"></td>
+                        <td><img src="/images/{{ $product->image }}" width="100px"></td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->detail }}</td>
                         <td>
