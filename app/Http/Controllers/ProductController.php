@@ -46,7 +46,7 @@ class ProductController extends Controller
         $input = $request->all();
     
         if ($image = $request->file('image')) {
-            $destinationPath = 'app/public/images/';
+            $destinationPath = 'images/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";
@@ -87,7 +87,7 @@ class ProductController extends Controller
         $input = $request->all();
     
         if ($image = $request->file('image')) {
-            $destinationPath = 'app/public/images/';
+            $destinationPath = 'images/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";
