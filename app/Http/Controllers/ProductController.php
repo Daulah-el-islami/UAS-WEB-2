@@ -46,15 +46,18 @@ class ProductController extends Controller
     
         $input = $request->all();
     
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/';
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
+            
+            // Store the image using Laravel's Storage facade
+            Storage::disk('public')->putFileAs('images', $image, $profileImage);
+            
+            $input['image'] = $profileImage;
         }
-      
+    
         Product::create($input);
-       
+    
         return redirect()->route('products.index')
                          ->with('success', 'Produk berhasil ditambahkan.');
     }
