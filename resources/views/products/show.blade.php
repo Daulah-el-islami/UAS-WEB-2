@@ -12,22 +12,22 @@
     </div>
   
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-12">
             <div class="form-group">
-                <strong>Nama Produk:</strong> <br/>
+                <strong>Nama Produk:</strong> <br>
                 {{ $product->name }}
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+        <div class="col-md-12 mt-2">
             <div class="form-group">
-                <strong>Detail:</strong> <br/>
+                <strong>Detail:</strong> <br>
                 {{ $product->detail }}
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-12">
             <div class="form-group">
-                <strong>Gambar:</strong><br/>
-                <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}" width="500px">
+                <strong>Gambar:</strong><br>
+                <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}" style="max-width: 500px;">
             </div>
         </div>
     </div>
