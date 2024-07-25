@@ -48,7 +48,7 @@ class ProductController extends Controller
         if ($image = $request->file('image')) {
             $destinationPath = 'images/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
+            $image->move($destinationPath, $profileImage, 'public');
             $input['image'] = "$profileImage";
         }
       
