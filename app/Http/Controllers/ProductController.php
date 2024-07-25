@@ -86,19 +86,27 @@ class ProductController extends Controller
     
         $input = $request->all();
     
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/';
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($product->image) {
+                Storage::disk('public')->delete('images/' . $product->image);
+            }
+    
+            $image = $request->file('image');
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage, 'public');
-            $input['image'] = "$profileImage";
-        }else{
+            
+            // Store the new image
+            Storage::disk('public')->putFileAs('images', $image, $profileImage);
+            
+            $input['image'] = $profileImage;
+        } else {
             unset($input['image']);
         }
-            
+    
         $product->update($input);
-      
+    
         return redirect()->route('products.index')
-                         ->with('success', 'Produk berhasil diupdated');
+                         ->with('success', 'Produk berhasil diupdate');
     }
   
     /**
