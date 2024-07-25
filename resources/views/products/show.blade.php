@@ -27,7 +27,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Gambar:</strong><br/>
-                <img src="{{ Storage::url('images/' . $product->image) }}" alt="{{ $product->name }}" width="500px">
+                <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}" width="500px">
             </div>
         </div>
     </div>

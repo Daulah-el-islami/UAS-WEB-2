@@ -49,7 +49,7 @@
                     <td>{{ $i++ }}</td> 
                     <td>
                         @if($product->image)
-                            <img src="{{ public_path('images/' . $product->image) }}" style="width: 100px;" alt="Product Image">
+                            <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}" style="width: 100px;" alt="Gambar Produk">
                         @else
                             <span class="no-image">No Image</span>
                         @endif
